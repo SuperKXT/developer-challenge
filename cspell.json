@@ -1,0 +1,31 @@
+{
+	"words": [
+		"ampm",
+		"Checkin",
+		"datetime",
+		"evenodd",
+		"Homefeed",
+		"revalidator",
+		"sooperwizer",
+		"typecheck",
+		"wimetrix",
+		"xlink"
+	],
+	"ignorePaths": [
+		"package-lock.json",
+		"pnpm-lock.yaml",
+		"node_modules",
+		"vscode-extension",
+		".git/objects",
+		".vscode",
+		".vscode-insiders",
+		"coverage",
+		"build",
+		"dist",
+		"public",
+		"trace",
+		"**/*.mp3",
+		"tsconfig.vitest-temp.json",
+		"pm2/pm2.types.ts"
+	]
+}
