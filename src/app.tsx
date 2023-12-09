@@ -1,10 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { ErrorBoundary } from './components/error-boundary.component.js';
-import { hooks } from './css-hooks.js';
 import { Dashboard } from './routes/dashboard.route.js';
 
-import './assets/reset.css';
+import './assets/theme.css';
 
 const router = createBrowserRouter([
 	{
@@ -22,11 +21,5 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => {
-	return (
-		<>
-			{/* eslint-disable-next-line react/no-danger */}
-			<style dangerouslySetInnerHTML={{ __html: hooks }} />
-			<RouterProvider router={router} />
-		</>
-	);
+	return <RouterProvider router={router} />;
 };
