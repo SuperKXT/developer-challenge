@@ -2,8 +2,16 @@
 //! DO NOT CHANGE MANUALLY!
 
 export const iconNames = [
+	'dinner-parties',
+	'events',
 	'expand',
-	'icon-1',
+	'home-feed',
+	'home',
+	'inbox',
+	'members',
+	'reports',
+	'resources',
+	'service',
 ] as const;
 
 export type IconName = (typeof iconNames)[number];
