@@ -23,7 +23,9 @@ export type Store<
 	key: string;
 	defaultVal: Default;
 	storage: Storage;
-	get: () => Schema['_output'] | ([Default] extends [never] ? null : Default);
+	get: () =>
+		| Schema['_output']
+		| ([Default] extends [never] ? null : Schema['_output']);
 	set: (value: Schema['_output']) => void;
 	remove: () => void;
 };
