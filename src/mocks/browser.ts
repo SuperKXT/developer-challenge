@@ -1,7 +1,7 @@
-// import { setupWorker } from 'msw';
+import { setupWorker } from 'msw/browser';
 
-// import { handlers }  from './handlers';
+import { handlers } from './handlers.js';
 
-// export const worker = setupWorker(...handlers);
-// worker.printHandlers();
-export {};
+export const worker = setupWorker(...handlers);
+
+worker.listHandlers();

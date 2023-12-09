@@ -1,14 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// import { isFetchMocked } from './config.js';
-
 import { App } from './app.jsx';
+import { worker } from './mocks/browser.js';
 
-// if (isFetchMocked) {
-// 	const { worker } = require('mocks/browser');
-// 	worker.start();
-// }
+await worker.start();
 
 const rootElement = document.getElementById('root');
 
