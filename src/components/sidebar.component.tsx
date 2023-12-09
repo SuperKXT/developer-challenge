@@ -1,24 +1,52 @@
-import { css } from '../css-hooks.js';
+import { AppIcon } from './app-icon.component.js';
+import { AppLink } from './app-link.component.js';
+import { Button } from './button.component.js';
+import styles from './sidebar.component.module.scss';
 
-const width = { full: 200, minimized: 70 };
+import { cx } from '../helpers/style.helpers.js';
+import { toggleSidebar, useSidebar } from '../hooks/sidebar.hook.js';
+
+const items = [
+	'home',
+	'reports',
+	'members',
+	'dinner-parties',
+	'inbox',
+	'home-feed',
+	'events',
+	'service',
+	'resources',
+] as const;
+
+const SideNav = (props: { name: (typeof items)[number] }) => {
+	return (
+		<AppLink
+			to={props.name}
+			className={styles.nav}
+		>
+			<AppIcon
+				name={props.name}
+				size={50}
+			/>
+			<p>{props.name.replace(/-/gu, ' ')}</p>
+		</AppLink>
+	);
+};
 
 export const Sidebar = () => {
+	const { isMinimized } = useSidebar();
 	return (
-		<aside
-			style={css({
-				width: width.full,
-				height: '100%',
-				display: 'flex',
-				flexDirection: 'column',
-				whiteSpace: 'nowrap',
-				backgroundColor: 'grey',
-				borderRightWidth: 2,
-				borderRightStyle: 'solid',
-				borderRightColor: 'darkgrey',
-				transition: 'width 0.2s linear',
-			})}
-		>
-			Sidebar
+		<aside className={cx(styles.aside, isMinimized && styles.mini)}>
+			<Button
+				label={<AppIcon name='expand' />}
+				onClick={toggleSidebar}
+			/>
+			{items.map((item) => (
+				<SideNav
+					key={item}
+					name={item}
+				/>
+			))}
 		</aside>
 	);
 };

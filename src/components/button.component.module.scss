@@ -1,0 +1,19 @@
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: transparent;
+	gap: var(--spacing);
+	padding-block: var(--spacing);
+	padding-inline: var(--spacing2);
+	cursor: pointer;
+	font-size: 1.2em;
+	font-weight: 500;
+	border-radius: var(--spacing);
+	border: 2px solid var(--divider);
+	transition: background-color var(--timing) linear;
+
+	&:hover {
+		background-color: var(--grey6);
+	}
+}

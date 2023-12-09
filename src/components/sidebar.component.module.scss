@@ -1,0 +1,38 @@
+.aside {
+	width: 175px;
+	height: 100%;
+	display: flex;
+	padding: var(--spacing);
+	gap: var(--spacing);
+	flex-direction: column;
+	white-space: nowrap;
+	transition: width var(--timing) linear;
+	border-right: 2px solid var(--divider);
+	background: var(--gray6);
+
+	&.mini {
+		width: 70px;
+
+		& > .nav > p {
+			flex-basis: 0%;
+		}
+
+		& > button {
+			transform: rotate(0deg);
+		}
+	}
+
+	& > button {
+		width: fit-content;
+		margin-inline: auto;
+		padding: 0;
+		transition: transform var(--timing) linear;
+		transform: rotate(180deg);
+		border-radius: var(--spacing);
+
+		&:hover {
+			background-color: red;
+			border-color: red;
+		}
+	}
+}
