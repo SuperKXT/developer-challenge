@@ -1,9 +1,8 @@
 import { useState } from 'react';
 
+import { css } from '../css-hooks.js';
 import { AuthError, stringifyError } from '../errors.js';
-import { csx } from '../helpers/style.helpers.js';
 
-import type { Mui } from '../types/mui.types.js';
 import type { Utils } from '../types/utils.types.js';
 
 const hiddenStatusTypes = ['idle', 'submitting', 'loading'] as const;
@@ -38,10 +37,20 @@ export type StatusUpdate = Utils.prettify<
 	  }>)
 >;
 
-type StatusParams = Mui.propsWithSx<{
+const colors: Record<ShowingType, string> = {
+	error: 'tomato',
+	success: 'green',
+	info: 'blue',
+	warning: 'orange',
+};
+
+type StatusParams = {
+	/** the styles to apply to the status */
+	style?: React.CSSProperties;
+
 	/** the key to add to the status. @default `status-hook-jsx` */
 	key?: string;
-}>;
+};
 
 const isHiddenStatus = (
 	value: Status | StatusUpdate,
@@ -127,17 +136,29 @@ export const useStatus = (params?: StatusParams) => {
 		isBusy,
 		statusJsx:
 			isShowing || status.hidingFrom ? (
-				<CustomAlert
+				<div
 					key={params?.key ?? 'status-hook-jsx'}
-					sx={csx({ flexBasis: 40, width: '100%' }, params?.sx)}
-					message={isShowing ? status.message : null}
 					hidden={!isShowing}
-					severity={isShowing ? status.type : status.hidingFrom ?? 'error'}
-					onClose={() => {
-						if (isHiddenStatus(status)) return;
-						updateStatus({ type: 'idle', hidingFrom: status.type });
-					}}
-				/>
+					style={css({
+						display: 'flex',
+						flexWrap: 'nowrap',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+						flexBasis: 40,
+						width: '100%',
+						backgroundColor:
+							colors[isShowing ? status.type : status.hidingFrom ?? 'error'],
+						...params?.style,
+					})}
+				>
+					<p>{isShowing ? status.message : ''}</p>
+					<button
+						onClick={() => {
+							if (isHiddenStatus(status)) return;
+							updateStatus({ type: 'idle', hidingFrom: status.type });
+						}}
+					/>
+				</div>
 			) : null,
 		asyncWrapper,
 	};
