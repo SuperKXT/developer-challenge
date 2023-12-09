@@ -1,8 +1,8 @@
 @font-face {
-	font-family: 'Inter';
+	font-family: Inter;
 	font-weight: 100 1000;
-	src: url(./inter-variable.ttf) format('truetype-variations');
-	src: url(./inter-variable.ttf) format('truetype') tech('variable');
+	src: url(./inter-variable.ttf) format(truetype-variations);
+	src: url(./inter-variable.ttf) format(truetype) tech(variable);
 }
 
 svg * {
@@ -16,7 +16,8 @@ svg * {
 *::before,
 *::after {
 	box-sizing: border-box;
-	font-family: 'Inter, system-ui, sans-serif';
+	font-family: Inter, system-ui, sans-serif;
+	color: hsl(234 1% 30%);
 }
 /*
   2. Remove default margin
@@ -29,9 +30,32 @@ svg * {
   3. Add accessible line-height
   4. Improve text rendering
 */
-body {
+body,
+#root {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
+	width: 100%;
+	height: 100vh;
+
+	--primary: hsl(271.26 99.17% 52.94%);
+	--background: hsl(0 0% 100%);
+	--grey1: hsl(234 3% 14%);
+	--grey2: hsl(234 1% 30%);
+	--grey3: hsl(234 1% 50%);
+	--grey4: hsl(234 4% 75%);
+	--grey5: hsl(234 12% 93%);
+	--grey6: hsl(0 0% 98%);
+	--divider: hsl(234 12% 93%);
+	--shadow: hsla(0 0% 0% / 0.03);
+	--error: hsl(9.13 100% 63.92%);
+
+	--spacing: 10px;
+	--spacing2: 20px;
+	--timing: 0.2s;
+}
+#root {
+	width: 100%;
+	height: 100vh;
 }
 /*
   5. Improve media defaults
