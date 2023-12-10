@@ -1,20 +1,9 @@
 .svg {
 	flex-shrink: 0;
+	color: inherit;
 
-	& :not(.fill) {
+	& * {
 		stroke-width: 2;
 		stroke: currentColor;
-
-		&.focus {
-			color: var(--primary);
-		}
-	}
-
-	& .fill {
-		fill: currentColor;
-
-		&.focus {
-			fill: var(--primary);
-		}
 	}
 }
