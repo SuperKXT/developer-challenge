@@ -8,7 +8,7 @@
 	white-space: nowrap;
 	transition: width var(--timing) linear;
 	border-right: 2px solid var(--divider);
-	background: var(--gray6);
+	background: var(--grey6);
 
 	&.mini {
 		width: 70px;
@@ -18,7 +18,7 @@
 		}
 
 		& > button {
-			transform: rotate(0deg);
+			transform: rotateY(0deg);
 		}
 	}
 
@@ -26,13 +26,45 @@
 		width: fit-content;
 		margin-inline: auto;
 		padding: 0;
-		transition: transform var(--timing) linear;
-		transform: rotate(180deg);
+		transition:
+			transform var(--timing) linear,
+			background-color var(--timing) linear;
+		transform: rotateY(180deg);
 		border-radius: var(--spacing);
+		border: none;
 
-		&:hover {
-			background-color: red;
-			border-color: red;
+		&:hover,
+		&:active,
+		&:focus-visible {
+			background-color: var(--grey5);
 		}
+	}
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	text-transform: capitalize;
+	transform: background-color var(--timing) linear;
+	border-radius: var(--spacing);
+
+	&:hover,
+	&:active,
+	&:focus-visible {
+		background-color: var(--grey5);
+
+		& * {
+			color: var(--primary);
+		}
+	}
+
+	& > svg {
+		flex-shrink: 0;
+	}
+
+	& > p {
+		flex-basis: 100%;
+		overflow: hidden;
+		font-weight: 500;
 	}
 }
