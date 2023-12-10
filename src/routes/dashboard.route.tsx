@@ -13,7 +13,7 @@ export const Dashboard = () => {
 	return (
 		<main className={styles.main}>
 			<Sidebar />
-			<aside>
+			<aside className={styles.aside}>
 				<div>
 					<h1>📱 Homefeed</h1>
 					<button>➕</button>

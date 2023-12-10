@@ -12,6 +12,7 @@
 	border-radius: var(--spacing);
 	border: 2px solid var(--divider);
 	transition: background-color var(--timing) linear;
+	line-height: 1;
 
 	&:hover {
 		background-color: var(--grey6);
