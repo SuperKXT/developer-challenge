@@ -38,9 +38,15 @@ export const Sidebar = () => {
 	return (
 		<aside className={cx(styles.aside, isMinimized && styles.mini)}>
 			<Button
-				label={<AppIcon name='expand' />}
+				className={styles.nav}
 				onClick={toggleSidebar}
-			/>
+			>
+				<AppIcon
+					name='expand'
+					size={50}
+				/>
+				<p>Collapse</p>
+			</Button>
 			{items.map((item) => (
 				<SideNav
 					key={item}
